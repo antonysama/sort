@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+   <body>
+        <table border = 1>
+            {% for root, _, files in data %}
+                <tr>
+                    <th> {{ root }} </th>
+                    {% for file in files %}
+                        <th><a href="{{ url_for('download', path=root | replace('/','?') ~ '?' ~ file) }}"> {{ file }} </a></th>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

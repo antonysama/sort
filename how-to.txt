@@ -1,0 +1,15 @@
+To have the correct time in the container you need to adjust the "TZ" value in the Dockerfile.
+
+You have to place the model data in the model folder, like it's shown in the screenshot "model.png".
+
+Then you need to build the image, with something like:
+docker build --tag sort .
+
+After that you can just start it with:
+docker run -p 5000:5000 sort
+
+If you want to mount folders (to see and make change without having to start the container again) you can start it like this (the first part of the -v command is your local folder, the second is the folder in the container):
+docker run -v C:\Git\freelance\02_docker_image\script.py:/src/script.py -v C:\Git\freelance\02_docker_image\results:/src/results -v C:\Git\freelance\02_docker_image\templates:/src/templates -v C:\Git\freelance\02_docker_image\upload:/src/upload -p 5000:5000 test
+
+You can also start it interactively, with the "-it" tag and the "/bin/bash" at the end, like this (in that case you'd want to comment out the last line in the Dockerfile, and run "python script.py" manually):
+docker run -it -v C:\Git\freelance\02_docker_image\script.py:/src/script.py -v C:\Git\freelance\02_docker_image\results:/src/results -v C:\Git\freelance\02_docker_image\templates:/src/templates -v C:\Git\freelance\02_docker_image\upload:/src/upload -p 5000:5000 test /bin/bash
