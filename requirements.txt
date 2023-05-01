@@ -3,4 +3,4 @@ tensorflow==1.14.0
 nltk==3.5
 bert-serving-client==1.10.0
 bert-serving-server==1.10.0
-flask==1.1.2
+flask==2.3.2
